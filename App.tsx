@@ -32,9 +32,11 @@ export default function App() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <View style={styles.container}>
-        <Text>Registro de gastos!</Text>
-        <StatusBar style="auto" />
-        
+      <StatusBar style="auto" />
+          <View className="flex-1 w-full">
+            <Text className="font-extrabold text-4xl">Hola, Tailwind CSS!</Text>
+          </View>
+
         {/* Botón flotante */}
         <TouchableOpacity
           style={styles.floatingButton}
@@ -58,7 +60,9 @@ export default function App() {
         enableOverDrag={false} // Deshabilitar el arrastre hacia arriba
       >
         <View style={styles.sheetContainer}>
-          <Text>¡Contenido del BottomSheetModal ccc!</Text>
+          <Text>¡Contenido del BottomSheetModal!</Text>
+          <Text className="flex text-lg font-extrabold">Registro de gastos!</Text>
+          <Text className="flex text-lg font-extrabold">Registro de gastos!</Text>
           <Button title="Cerrar BottomSheet" onPress={handleCloseBottomSheet} />
         </View>
       </BottomSheetModal>
