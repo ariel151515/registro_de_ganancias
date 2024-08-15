@@ -58,7 +58,7 @@ export default function App() {
         enableOverDrag={false} // Deshabilitar el arrastre hacia arriba
       >
         <View style={styles.sheetContainer}>
-          <Text>¡Contenido del BottomSheetModal xxxxxxxxx!</Text>
+          <Text>¡Contenido del BottomSheetModal ccc!</Text>
           <Button title="Cerrar BottomSheet" onPress={handleCloseBottomSheet} />
         </View>
       </BottomSheetModal>
