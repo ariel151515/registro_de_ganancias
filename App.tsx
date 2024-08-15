@@ -1,15 +1,8 @@
 import React from 'react';
-import { StyleSheet, SafeAreaView } from 'react-native';
-
-// Navigation
-import AppNavigator from './src/navigation/AppNavigation';
+import MainLayout from './src/navigation/MainLayout'; // MainLayout ya incluye NavigationContainer
 
 const App: React.FC = () => {
-  return (
-    <>
-      <AppNavigator />
-    </>
-  );
+  return <MainLayout />;
 }
 
 export default App;

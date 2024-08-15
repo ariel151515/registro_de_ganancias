@@ -1,71 +1,29 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Button, TouchableOpacity, SafeAreaView } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import BottomSheetModal from '@gorhom/bottom-sheet';
 import React, { useRef, useState } from 'react';
 
-// Define el tipo para la referencia del BottomSheetModal
-type BottomSheetRef = BottomSheetModal | null;
+// Componentes
+import {Fecha} from './../../components/Fecha';
+import {BoxBalance} from './../../components/BoxBalance';
+import {BoxContenido} from './../../components/BoxContenido';
 
-export const Home: React.FC = () => {
-  // Referencia al BottomSheetModal
-  const bottomSheetRef = useRef<BottomSheetRef>(null);
+// Iconos
+import Feather from '@expo/vector-icons/Feather';
 
-  // Estado para controlar la visibilidad del overlay
-  const [isOverlayVisible, setOverlayVisible] = useState<boolean>(false);
-
-  // Definir los puntos de anclaje (snap points)
-  const snapPoints: string[] = ['30%'];
-
-  // Función para abrir el BottomSheetModal en el primer snap point (30%)
-  const handleOpenBottomSheet = () => {
-    bottomSheetRef.current?.expand(); // Abre el BottomSheetModal al primer snap point
-    setOverlayVisible(true); // Mostrar overlay
-  };
-
-  // Función para cerrar el BottomSheetModal
-  const handleCloseBottomSheet = () => {
-    bottomSheetRef.current?.close(); // Cierra el BottomSheetModal
-    setOverlayVisible(false); // Ocultar overlay
-  };
+export const HomeScreen: React.FC = () => {
 
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
-      <View style={styles.container}>
+    <GestureHandlerRootView className='flex-1 bg-base'>
+      <SafeAreaView style={styles.container}>
       <StatusBar style="auto" />
-          <View className="flex-1 w-full">
-            <Text className="font-extrabold text-4xl">Hola, Tailwind CSS!</Text>
+          <View className="flex-1 w-full p-3" style={{marginBottom:'20%'}}>
+           <Fecha />
+           <BoxBalance />
+           <BoxContenido />
           </View>
-
-        {/* Botón flotante */}
-        <TouchableOpacity
-          style={styles.floatingButton}
-          onPress={handleOpenBottomSheet}
-        >
-          <Text style={styles.buttonText}>+</Text>
-        </TouchableOpacity>
-      </View>
-
-      {/* Overlay */}
-      {isOverlayVisible && (
-        <View style={styles.overlay} />
-      )}
-
-      <BottomSheetModal
-        ref={bottomSheetRef}
-        snapPoints={snapPoints}
-        index={-1}  // Inicialmente cerrado
-        onDismiss={() => setOverlayVisible(false)}  // Ocultar overlay cuando se cierra el BottomSheetModal
-        enablePanDownToClose={false} // Deshabilitar el deslizamiento hacia abajo para cerrar
-        enableOverDrag={false} // Deshabilitar el arrastre hacia arriba
-      >
-        <View style={styles.sheetContainer}>
-          <Text>¡Contenido del BottomSheetModal!</Text>
-          <Text className="flex text-lg font-extrabold">Registro de gastos!</Text>
-          <Text className="flex text-lg font-extrabold">Registro de gastos!</Text>
-          <Button title="Cerrar BottomSheet" onPress={handleCloseBottomSheet} />
-        </View>
-      </BottomSheetModal>
+      </SafeAreaView>
     </GestureHandlerRootView>
   );
 }
@@ -84,14 +42,13 @@ const styles = StyleSheet.create({
   overlay: {
     ...StyleSheet.absoluteFillObject,
     backgroundColor: 'rgba(0, 0, 0, 0.5)', // Fondo negro con 50% de opacidad
-    zIndex: -1, // Asegura que el overlay esté detrás del BottomSheetModal
   },
   floatingButton: {
     position: 'absolute',
-    bottom: 30, // Ajusta según sea necesario
+    bottom: 20, // Ajusta según sea necesario
     right: 30,  // Ajusta según sea necesario
-    width: 60,
-    height: 60,
+    width: 35,
+    height: 35,
     backgroundColor: '#007bff', // Color del botón
     borderRadius: 30, // Redondear el botón
     justifyContent: 'center',
