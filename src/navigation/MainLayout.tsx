@@ -1,15 +1,18 @@
 import React, { useRef, useState } from 'react';
-import { StyleSheet, View, Text, Button, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, TextInput } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import BottomSheetModal from '@gorhom/bottom-sheet';
 import Feather from '@expo/vector-icons/Feather';
-import { NavigationContainer } from '@react-navigation/native'; // Importa NavigationContainer
-import TabNavigation from './TabNavigation'; // Tu TabNavigator
+import { NavigationContainer } from '@react-navigation/native';
+import TabNavigation from './TabNavigation';
+
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 
 const MainLayout: React.FC = () => {
   const bottomSheetRef = useRef<BottomSheetModal>(null);
   const [isOverlayVisible, setOverlayVisible] = useState<boolean>(false);
-  const snapPoints = ['30%'];
+  const snapPoints = ['38%'];  // Eliminamos el '0%'
 
   const handleOpenBottomSheet = () => {
     bottomSheetRef.current?.expand();
@@ -19,6 +22,12 @@ const MainLayout: React.FC = () => {
   const handleCloseBottomSheet = () => {
     bottomSheetRef.current?.close();
     setOverlayVisible(false);
+  };
+
+  const handleSheetChanges = (index: number) => {
+    if (index === -1) {  // Detecta cuando el Bottom Sheet está cerrado
+      setOverlayVisible(false);
+    }
   };
 
   return (
@@ -46,11 +55,29 @@ const MainLayout: React.FC = () => {
           ref={bottomSheetRef}
           snapPoints={snapPoints}
           index={-1}
+          enablePanDownToClose={true}  // Habilita el deslizamiento hacia abajo para cerrar
           onDismiss={() => setOverlayVisible(false)}
+          onChange={handleSheetChanges}
         >
-          <View style={styles.sheetContainer}>
-            <Text>¡Contenido del BottomSheetModal!</Text>
-            <Button title="Cerrar BottomSheet" onPress={handleCloseBottomSheet} />
+          <View style={styles.sheetContent}>
+            <View style={styles.inputContainer}>
+              <FontAwesome5 name="calendar-day" size={24} color="#BBBBBB" />
+              <TextInput style={styles.input} placeholder="Select Date" />
+            </View>
+
+            <View style={styles.inputContainer}>
+              <MaterialCommunityIcons name="currency-btc" size={24} color="#BBBBBB" />
+              <TextInput style={styles.input} placeholder="Saldo inicial" />
+            </View>
+
+            <View style={styles.inputContainer}>
+              <MaterialCommunityIcons name="currency-btc" size={24} color="#BBBBBB" />
+              <TextInput style={styles.input} placeholder="Saldo posterior" />
+            </View>
+
+            <TouchableOpacity onPress={handleCloseBottomSheet} style={styles.sendButton}>
+              <Text style={styles.sendButtonText}>Enviar</Text>
+            </TouchableOpacity>
           </View>
         </BottomSheetModal>
       </NavigationContainer>
@@ -74,9 +101,32 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
-  sheetContainer: {
+  sheetContent: {
     padding: 20,
+  },
+  inputContainer: {
+    flexDirection: 'row',
     alignItems: 'center',
+    backgroundColor: '#f0f0f0',
+    padding: 10,
+    borderRadius: 10,
+    marginBottom: 10,
+  },
+  input: {
+    marginLeft: 10,
+    flex: 1,
+    height: 40,
+  },
+  sendButton: {
+    backgroundColor: '#007bff',
+    padding: 15,
+    borderRadius: 10,
+    alignItems: 'center',
+  },
+  sendButtonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
 

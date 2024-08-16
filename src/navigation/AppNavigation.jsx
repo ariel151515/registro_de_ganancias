@@ -7,6 +7,7 @@ import TabNavigation from './TabNavigation'; // Verifica que este archivo exista
 import {CreateAccountScreen} from '../screen/CreateAccount/CreateAccountScreen';
 import {LoginScreen} from '../screen/LoginScreen/LoginScreen'; // Asegúrate de que este sea el archivo correcto
 import {SettingScreen} from '../screen/SettingScreen/SettingScreen';
+import {GananciasScreen} from '../screen/Ganancias/GananciasScreen';
 
 const Stack = createStackNavigator();
 
@@ -18,26 +19,11 @@ const AppNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen 
-          name="Tabs" 
-          component={isAuthenticated ? TabNavigation : LoginScreen}  
-          options={{ headerShown: false }} 
-        />
-        <Stack.Screen 
-          name="Login" 
-          component={LoginScreen} 
-          options={{ headerTitle: ' ' }}
-        />
-        <Stack.Screen 
-          name="CreateAccountScreen" 
-          component={CreateAccountScreen} 
-          options={{ headerTitle: ' ' }}
-        />
-        <Stack.Screen 
-          name="SettingScreen" 
-          component={SettingScreen} 
-          options={{ headerTitle: ' ' }}
-        />
+        <Stack.Screen name="Tabs" component={isAuthenticated ? TabNavigation : LoginScreen}  options={{ headerShown: false }} />
+        <Stack.Screen name="Login" component={LoginScreen} options={{ headerTitle: ' ' }}/>
+        <Stack.Screen name="CreateAccount" component={CreateAccountScreen} options={{ headerTitle: ' ' }}/>
+        <Stack.Screen name="Setting" component={SettingScreen} options={{ headerTitle: ' ' }}/>
+        <Stack.Screen name="Ganancias" component={GananciasScreen} options={{ headerTitle: ' ' }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

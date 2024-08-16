@@ -15,7 +15,7 @@ const ItemBox: React.FC = () => {
             <View className='flex flex-row justify-between gap-5 items-center'>
                 <Text className='text-verde text-sm'>0.65</Text>
                <View className='p-2 bg-grisItemDos rounded-md'>
-                 <Text className='text-verde text-sm'>+ 13%</Text>
+                 <Text className='text-verde text-sm'>13%</Text>
                </View>
             </View>
         </View>
