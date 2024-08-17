@@ -1,69 +1,91 @@
 import React, { useState } from 'react';
 import { Text } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Feather, Ionicons, MaterialCommunityIcons, Fontisto } from '@expo/vector-icons';
+import { createStackNavigator } from '@react-navigation/stack';
+import { Fontisto, MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 
-// Screen Imports
+// Importar pantallas
 import { HomeScreen } from '../screen/HomeScreen/HomeScreen';
-import { DataScreen } from './../screen/DataScreen/DataScreen';
-import { LoginScreen } from './../screen/LoginScreen/LoginScreen';
-import { SettingScreen } from './../screen/SettingScreen/SettingScreen';
-import { GananciasScreen } from '../screen/Ganancias/GananciasScreen';
+import { DataScreen } from '../screen/DataScreen/DataScreen';
+import { LoginScreen } from '../screen/LoginScreen/LoginScreen';
+import { CreateAccountScreen } from '../screen/CreateAccount/CreateAccountScreen';
+import { SettingScreen } from '../screen/SettingScreen/SettingScreen';
+import { GananciasScreen } from '../screen/GananciasScreen/GananciasScreen';
 
+const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const TabNavigation = () => {
   const [isAuthenticated] = useState(true);
 
   return (
-    <Tab.Navigator 
+    <Stack.Navigator>
+      <Stack.Screen 
+        name="Tabs" 
+        component={isAuthenticated ? TabNavigator : LoginScreen} 
+        options={{ headerShown: false }} 
+      />
+      <Stack.Screen 
+        name="Login" 
+        component={LoginScreen} 
+        options={{ headerTitle: ' ' }} 
+      />
+      <Stack.Screen 
+        name="CreateAccount" 
+        component={CreateAccountScreen} 
+        options={{ headerTitle: ' ' }} 
+      />
+      <Stack.Screen 
+        name="Setting" 
+        component={SettingScreen} 
+        options={{ headerTitle: ' ' }} 
+      />
+     <Stack.Screen 
+        name="Ganancias" 
+        component={GananciasScreen} 
+        options={{ headerShown: false }} 
+      />
+    </Stack.Navigator>
+  );
+};
+
+const TabNavigator = () => {
+  const [isAuthenticated] = useState(true);
+
+  return (
+    <Tab.Navigator
       screenOptions={({ route }) => ({
-        tabBarActiveTintColor: '#086BEF',
+        tabBarActiveTintColor: '#54C259',
         tabBarInactiveTintColor: '#ccc',
-        tabBarStyle: { 
-          display: 'flex', 
+        tabBarStyle: {
           backgroundColor: '#fff',
           height: '8%',
           paddingTop: 9,
           paddingBottom: 9,
-          borderTopLeftRadius: 0,
-          borderTopRightRadius: 0,
         },
-        tabBarIcon: ({ focused, color, size }) => {
+        tabBarIcon: ({ color, size }) => {
           let iconName;
-
-          switch (route.name) {
-            case 'Home':
-              iconName = 'home';
-              return <Fontisto name={iconName} size={size} color={color} />;
-            case 'Data':
-              iconName = 'google-analytics';
-              return <MaterialCommunityIcons name={iconName} size={size} color={color} />;
-            case 'SettingScreen':
-              iconName = 'settings';
-              return <Ionicons name={iconName} size={size} color={color} />;
-            default:
-              return null;
+          if (route.name === 'Home') {
+            iconName = 'home';
+            return <Fontisto name={iconName} size={size} color={color} />;
+          } else if (route.name === 'Data') {
+            iconName = 'google-analytics';
+            return <MaterialCommunityIcons name={iconName} size={size} color={color} />;
+          } else if (route.name === 'SettingScreen') {
+            iconName = 'settings';
+            return <Ionicons name={iconName} size={size} color={color} />;
           }
         },
-        tabBarLabel: ({ focused, color }) => {
+        tabBarLabel: ({ color }) => {
           let label;
-
-          switch (route.name) {
-            case 'Home':
-              label = 'HOME';
-              break;
-            case 'Data':
-              label = 'DATA';
-              break;
-            case 'SettingScreen':
-              label = 'SETTING';
-              break;
-            default:
-              label = '';
+          if (route.name === 'Home') {
+            label = 'HOME';
+          } else if (route.name === 'Data') {
+            label = 'DATA';
+          } else if (route.name === 'SettingScreen') {
+            label = 'SETTING';
           }
-
-          return <Text style={{ fontSize: 12, marginBottom: 0, color: color, marginTop: 0 }}>{label}</Text>;
+          return <Text style={{ fontSize: 12, color }}>{label}</Text>;
         },
         headerShown: false,
       })}
@@ -82,6 +104,6 @@ const TabNavigation = () => {
       />
     </Tab.Navigator>
   );
-}
+};
 
 export default TabNavigation;

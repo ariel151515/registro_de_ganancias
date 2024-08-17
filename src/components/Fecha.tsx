@@ -11,11 +11,11 @@ export const Fecha: React.FC = () => {
   return (
     <View className='flex-row justify-between mt-10'>
       <Text className='text-base font-semibold'>Home</Text>
-      <View className='flex flex-row items-center gap-2'>
-        <AntDesign name="left" size={14} color="black" />
+      <TouchableOpacity className='flex flex-row items-center gap-3'>
+        <AntDesign name="left" size={28} color="black" />
         <Text className='text-base font-semibold'>ago.2024</Text>
-        <AntDesign name="right" size={14} color="black" />
-      </View>
+        <AntDesign name="right" size={28} color="black" />
+      </TouchableOpacity>
     </View>
   );
 }

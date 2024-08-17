@@ -9,7 +9,7 @@ export const BoxBalance: React.FC = () => {
   return (
     <View className='flex w-full bg-white p-5 mt-4 rounded-md'>
        <Text className='text-base'>Total Balance (USDT)</Text>
-       <Text className='text-base font-black text-4xl py-2 text-azul'>345.9854</Text>
+       <Text className='text-base font-black text-4xl py-2 text-grisOscuro'>345.9854</Text>
     </View>
   );
 }

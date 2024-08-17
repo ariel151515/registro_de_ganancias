@@ -12,7 +12,7 @@ export const SettingScreen: React.FC = () => {
       <Text>SettingScreen</Text>
       <Button
         title="Ir a pantalla fuera de tabs"
-        onPress={() => navigation.navigate('GananciasScreen')}
+        onPress={() => navigation.navigate('Ganancias')}
       />
     </SafeAreaView>
   );

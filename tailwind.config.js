@@ -12,7 +12,10 @@ module.exports = {
         'grisItemDos':'#FBEFEF',
         'grisTexto':'#A1A1A1',
         'grisInput':'#E3E2E2',
-        'grisIcono':'#BBBBBB'
+        'grisIcono':'#BBBBBB',
+        'verde':'#54C259',
+        'grisOscuro':'#6A6A6A',
+        'amarilloBaseGanancias':'#DAF1DB'
       },
     },
   },

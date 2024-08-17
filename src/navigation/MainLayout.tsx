@@ -12,7 +12,7 @@ import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 const MainLayout: React.FC = () => {
   const bottomSheetRef = useRef<BottomSheetModal>(null);
   const [isOverlayVisible, setOverlayVisible] = useState<boolean>(false);
-  const snapPoints = ['38%'];  // Eliminamos el '0%'
+  const snapPoints = ['65%'];  // Eliminamos el '0%'
 
   const handleOpenBottomSheet = () => {
     bottomSheetRef.current?.expand();
@@ -64,15 +64,30 @@ const MainLayout: React.FC = () => {
               <FontAwesome5 name="calendar-day" size={24} color="#BBBBBB" />
               <TextInput style={styles.input} placeholder="Select Date" />
             </View>
-
+             
             <View style={styles.inputContainer}>
               <MaterialCommunityIcons name="currency-btc" size={24} color="#BBBBBB" />
-              <TextInput style={styles.input} placeholder="Saldo inicial" />
+              <TextInput style={styles.input} placeholder="Moneda" />
             </View>
 
             <View style={styles.inputContainer}>
               <MaterialCommunityIcons name="currency-btc" size={24} color="#BBBBBB" />
-              <TextInput style={styles.input} placeholder="Saldo posterior" />
+              <TextInput style={styles.input} placeholder="Valor de la moneda" />
+            </View>
+
+            <View style={styles.inputContainer}>
+              <MaterialCommunityIcons name="currency-btc" size={24} color="#BBBBBB" />
+              <TextInput style={styles.input} placeholder="Tiempo de compra" />
+            </View>
+
+            <View style={styles.inputContainer}>
+              <MaterialCommunityIcons name="currency-btc" size={24} color="#BBBBBB" />
+              <TextInput style={styles.input} placeholder="USDT actual" />
+            </View>
+
+            <View style={styles.inputContainer}>
+              <MaterialCommunityIcons name="currency-btc" size={24} color="#BBBBBB" />
+              <TextInput style={styles.input} placeholder="USDT con ganancias" />
             </View>
 
             <TouchableOpacity onPress={handleCloseBottomSheet} style={styles.sendButton}>
@@ -92,7 +107,7 @@ const styles = StyleSheet.create({
     right: 30,
     width: 50,
     height: 50,
-    backgroundColor: '#007bff',
+    backgroundColor: '#54C259',
     borderRadius: 30,
     justifyContent: 'center',
     alignItems: 'center',
@@ -118,7 +133,7 @@ const styles = StyleSheet.create({
     height: 40,
   },
   sendButton: {
-    backgroundColor: '#007bff',
+    backgroundColor: '#54C259',
     padding: 15,
     borderRadius: 10,
     alignItems: 'center',
