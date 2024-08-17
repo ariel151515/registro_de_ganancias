@@ -81,7 +81,7 @@ const TabNavigator = () => {
           if (route.name === 'Home') {
             label = 'HOME';
           } else if (route.name === 'Data') {
-            label = 'DATA';
+            label = 'ANALITICA';
           } else if (route.name === 'SettingScreen') {
             label = 'SETTING';
           }
@@ -96,7 +96,7 @@ const TabNavigator = () => {
       />
       <Tab.Screen 
         name="Data" 
-        component={isAuthenticated ? DataScreen : LoginScreen} 
+        component={isAuthenticated ? DataScreen : LoginScreen}
       />
       <Tab.Screen 
         name="SettingScreen" 

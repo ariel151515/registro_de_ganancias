@@ -6,11 +6,11 @@ import { StackNavigationProp } from '@react-navigation/stack';
 // Iconos
 import AntDesign from '@expo/vector-icons/AntDesign';
 
-export const Fecha: React.FC = () => {
+export const HeaderData: React.FC = () => {
   const navigation = useNavigation();
   return (
     <View className='flex-row justify-between mt-10'>
-      <Text className='text-base font-semibold'>Home</Text>
+      <Text className='text-base font-semibold'>Analitica</Text>
       <TouchableOpacity className='flex flex-row items-center gap-3'>
         <AntDesign name="left" size={24} color="black" />
         <Text className='text-base font-semibold'>ago.2024</Text>
@@ -19,6 +19,3 @@ export const Fecha: React.FC = () => {
     </View>
   );
 }
-
-
-
