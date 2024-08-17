@@ -28,12 +28,12 @@ const TabNavigation = () => {
       <Stack.Screen 
         name="Login" 
         component={LoginScreen} 
-        options={{ headerTitle: ' ' }} 
+        options={{ headerShown: false, headerTitle: ' ' }}  
       />
       <Stack.Screen 
         name="CreateAccount" 
         component={CreateAccountScreen} 
-        options={{ headerTitle: ' ' }} 
+        options={{ headerTitle: ' ', headerShown: false }} 
       />
       <Stack.Screen 
         name="Setting" 
